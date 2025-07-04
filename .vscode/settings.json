@@ -4,7 +4,6 @@
     "**/.svn": true,
     "**/.hg": true,
     "**/.DS_Store": true,
-    "**/Thumbs.db": true,
-    ".yoyo": true
+    "**/Thumbs.db": true
   }
 }
