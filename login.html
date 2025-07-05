@@ -25,14 +25,12 @@
               data-context="signin"
             ></div>
             <div class="g_id_signin" data-type="icon" data-shape="circle"></div>
-            <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
           </div>
           <span>or use your email for registration</span>
           <input type="text" placeholder="Name" />
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <button type="button">Sign Up</button>
+          <button type="submit">Sign Up</button>
         </form>
       </div>
 
@@ -43,14 +41,12 @@
             <a href="#" class="icon"
               ><i class="fa-brands fa-google-plus-g"></i
             ></a>
-            <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
           </div>
           <span>or use your email password</span>
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
           <a href="#">Forget Your Password?</a>
-          <button type="button">Sign In</button>
+          <button type="submit">Sign In</button>
         </form>
       </div>
 
@@ -102,10 +98,11 @@
         console.log("Image URL: " + decodedToken.picture);
         console.log("Email: " + decodedToken.email);
 
-        // After successful login, redirect to the dashboard.
+        // After successful login, redirect to the homepage.
         alert("Welcome, " + decodedToken.name + "!");
         window.location.href = "index.html";
       }
     </script>
+    <script src="js/auth.js"></script>
   </body>
 </html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NexaCart</title>
+    <title>NexaCart - Your Ultimate Shopping Destination</title>
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link
@@ -29,9 +29,28 @@
           <div class="nav-icons">
             <a href="#"><i class="fa-regular fa-heart"></i></a>
             <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+
+            <!-- This icon is for logged-out users -->
             <a href="login.html" class="login-icon"
               ><i class="fa-regular fa-user"></i
             ></a>
+
+            <!-- This profile dropdown is for logged-in users (hidden by default) -->
+            <div class="profile-dropdown" style="display: none">
+              <button class="profile-btn">
+                <i class="fa-solid fa-user"></i>
+                <span class="profile-name">User</span>
+                <!-- Name will be filled by JS -->
+              </button>
+              <div class="dropdown-content">
+                <a href="dashboard.html"
+                  ><i class="fa-solid fa-gauge-high"></i> Dashboard</a
+                >
+                <a href="#" class="logout-button"
+                  ><i class="fa-solid fa-right-from-bracket"></i> Logout</a
+                >
+              </div>
+            </div>
           </div>
         </ul>
       </nav>
@@ -99,5 +118,6 @@
         </div>
       </div>
     </footer>
+    <script src="js/auth.js"></script>
   </body>
 </html>
