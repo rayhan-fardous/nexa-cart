@@ -99,14 +99,12 @@
         console.log("Decoded User Information:");
         console.log("ID: " + decodedToken.sub);
         console.log("Full Name: " + decodedToken.name);
-        console.log("Given Name: " + decodedToken.given_name);
-        console.log("Family Name: " + decodedToken.family_name);
         console.log("Image URL: " + decodedToken.picture);
         console.log("Email: " + decodedToken.email);
 
-        // After successful login, you can redirect the user.
+        // After successful login, redirect to the dashboard.
         alert("Welcome, " + decodedToken.name + "!");
-        window.location.href = "index.html"; // or to a user dashboard
+        window.location.href = "index.html";
       }
     </script>
   </body>

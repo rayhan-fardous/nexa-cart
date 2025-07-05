@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Dashboard - NexaCart</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html" class="logo"
+          ><img
+            src="./assets/Images/logo.png"
+            alt="Logo"
+            style="height: 40px; vertical-align: middle; margin-right: 5px"
+        /></a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+          <a href="#"><i class="fa-regular fa-heart"></i></a>
+          <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+          <a href="index.html" class="login-icon"
+            ><i class="fa-solid fa-user"></i
+          ></a>
+        </div>
+      </nav>
+    </header>
+    <main class="dashboard-container">
+      <aside class="dashboard-sidebar">
+        <ul>
+          <li>
+            <a href="#" class="active"
+              ><i class="fa-solid fa-gauge-high"></i> Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><i class="fa-solid fa-box-archive"></i> Order History</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><i class="fa-solid fa-user-pen"></i> Profile Settings</a
+            >
+          </li>
+          <li>
+            <a href="#"><i class="fa-solid fa-heart"></i> Wishlist</a>
+          </li>
+          <li>
+            <a href="index.html"
+              ><i class="fa-solid fa-right-from-bracket"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <section class="dashboard-content">
+        <h1>Welcome Back, Rayhan!</h1>
+        <div class="summary-cards">
+          <div class="card">
+            <i class="fa-solid fa-box"></i>
+            <div class="card-info">
+              <h3>15</h3>
+              <p>Total Orders</p>
+            </div>
+          </div>
+          <div class="card">
+            <i class="fa-solid fa-heart"></i>
+            <div class="card-info">
+              <h3>8</h3>
+              <p>In Your Wishlist</p>
+            </div>
+          </div>
+          <div class="card">
+            <i class="fa-solid fa-circle-check"></i>
+            <div class="card-info">
+              <h3>Active</h3>
+              <p>Account Status</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="recent-orders">
+          <h2>Recent Orders</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#NC-84321</td>
+                <td>July 01, 2025</td>
+                <td><span class="status delivered">Delivered</span></td>
+                <td>$299.99</td>
+                <td><a href="#" class="btn-view">View</a></td>
+              </tr>
+              <tr>
+                <td>#NC-84156</td>
+                <td>June 25, 2025</td>
+                <td><span class="status shipped">Shipped</span></td>
+                <td>$89.50</td>
+                <td><a href="#" class="btn-view">View</a></td>
+              </tr>
+              <tr>
+                <td>#NC-84098</td>
+                <td>June 22, 2025</td>
+                <td><span class="status pending">Pending</span></td>
+                <td>$45.00</td>
+                <td><a href="#" class="btn-view">View</a></td>
+              </tr>
+              <tr>
+                <td>#NC-83991</td>
+                <td>June 15, 2025</td>
+                <td><span class="status delivered">Delivered</span></td>
+                <td>$149.99</td>
+                <td><a href="#" class="btn-view">View</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2025 NexaCart. All Rights Reserved.</p>
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
