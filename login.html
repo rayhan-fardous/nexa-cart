@@ -10,6 +10,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
   </head>
   <body class="login-body">
     <div class="container" id="container">
@@ -17,9 +18,13 @@
         <form>
           <h1>Create Account</h1>
           <div class="social-icons">
-            <a href="#" class="icon"
-              ><i class="fa-brands fa-google-plus-g"></i
-            ></a>
+            <div
+              id="g_id_onload"
+              data-client_id="68796358151-gd0q5jduf035f7emgiag53aataukht1q.apps.googleusercontent.com"
+              data-callback="handleCredentialResponse"
+              data-context="signin"
+            ></div>
+            <div class="g_id_signin" data-type="icon" data-shape="circle"></div>
             <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
           </div>
@@ -79,6 +84,30 @@
       loginBtn.addEventListener("click", () => {
         container.classList.remove("active");
       });
+    </script>
+    <script>
+      function handleCredentialResponse(response) {
+        // The 'credential' property contains the user's info in a JWT format.
+        console.log("Encoded JWT ID token: " + response.credential);
+
+        // For a prototype, you can decode the JWT on the front-end to see user info.
+        // NOTE: In a real app, you MUST send this 'response.credential' to your backend for secure verification!
+        const decodedToken = JSON.parse(
+          atob(response.credential.split(".")[1])
+        );
+
+        console.log("Decoded User Information:");
+        console.log("ID: " + decodedToken.sub);
+        console.log("Full Name: " + decodedToken.name);
+        console.log("Given Name: " + decodedToken.given_name);
+        console.log("Family Name: " + decodedToken.family_name);
+        console.log("Image URL: " + decodedToken.picture);
+        console.log("Email: " + decodedToken.email);
+
+        // After successful login, you can redirect the user.
+        alert("Welcome, " + decodedToken.name + "!");
+        window.location.href = "index.html"; // or to a user dashboard
+      }
     </script>
   </body>
 </html>
