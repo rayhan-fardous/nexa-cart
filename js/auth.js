@@ -16,64 +16,90 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- REGISTRATION LOGIC ---
+  // --- REGISTRATION LOGIC WITH VALIDATION ---
   const signUpForm = document.querySelector(".sign-up form");
   if (signUpForm) {
     signUpForm.addEventListener("submit", (e) => {
-      e.preventDefault();
+      e.preventDefault(); // Always prevent default submission
+
       const name = signUpForm.querySelector('input[type="text"]').value;
       const email = signUpForm.querySelector('input[type="email"]').value;
-      const password = signUpForm.querySelector('input[type="password"]').value;
+      const passwordInput = signUpForm.querySelector("#signupPassword");
+      const confirmPasswordInput = signUpForm.querySelector("#confirmPassword");
+      const password = passwordInput.value;
+      const confirmPassword = confirmPasswordInput.value;
+      const confirmPasswordFeedback = signUpForm.querySelector(
+        "#confirmPasswordFeedback"
+      );
 
-      if (!name || !email || !password) {
-        alert("Please fill in all fields.");
-        return;
+      // Custom validation check: Do passwords match?
+      if (password !== confirmPassword) {
+        confirmPasswordFeedback.textContent = "Passwords do not match.";
+        // This is a Bootstrap method to show an input as invalid
+        confirmPasswordInput.setCustomValidity("Invalid");
+      } else {
+        confirmPasswordFeedback.textContent = "Please confirm your password.";
+        // If they match, reset the custom validity
+        confirmPasswordInput.setCustomValidity("");
       }
 
-      const users = JSON.parse(localStorage.getItem("users")) || [];
-      const userExists = users.find((user) => user.email === email);
+      if (!signUpForm.checkValidity()) {
+        e.stopPropagation(); // Stop other events
+      } else {
+        // If the form is valid, proceed with registration
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const userExists = users.find((user) => user.email === email);
 
-      if (userExists) {
-        alert("User with this email already exists!");
-        return;
+        if (userExists) {
+          alert("User with this email already exists!");
+          return;
+        }
+
+        users.push({ name, email, password });
+        localStorage.setItem("users", JSON.stringify(users));
+        alert("Registration successful! Please sign in.");
+        container.classList.remove("active");
+        signUpForm.reset();
+        signUpForm.classList.remove("was-validated"); // Reset validation state
       }
 
-      users.push({ name, email, password });
-      localStorage.setItem("users", JSON.stringify(users));
-      alert("Registration successful! Please sign in.");
-      container.classList.remove("active");
-      signUpForm.reset();
+      // Add was-validated class to show feedback messages
+      signUpForm.classList.add("was-validated");
     });
   }
 
-  // --- LOGIN LOGIC ---
+  // --- LOGIN LOGIC WITH VALIDATION ---
   const signInForm = document.querySelector(".sign-in form");
   if (signInForm) {
     signInForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const email = signInForm.querySelector('input[type="email"]').value;
-      const password = signInForm.querySelector('input[type="password"]').value;
 
-      if (!email || !password) {
-        alert("Please enter both email and password.");
-        return;
+      if (!signInForm.checkValidity()) {
+        e.stopPropagation();
+      } else {
+        const email = signInForm.querySelector('input[type="email"]').value;
+        const password = signInForm.querySelector(
+          'input[type="password"]'
+        ).value;
+
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const user = users.find((u) => u.email === email);
+
+        if (!user || user.password !== password) {
+          alert("Incorrect email or password. Please try again.");
+          signInForm.classList.remove("was-validated"); // Reset validation state on error
+          return;
+        }
+
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        alert(`Welcome back, ${user.name}!`);
+        window.location.href = "index.html";
       }
 
-      const users = JSON.parse(localStorage.getItem("users")) || [];
-      const user = users.find((u) => u.email === email);
-
-      if (!user || user.password !== password) {
-        alert("Incorrect email or password. Please try again.");
-        return;
-      }
-
-      localStorage.setItem("currentUser", JSON.stringify(user));
-      alert(`Welcome back, ${user.name}!`);
-      window.location.href = "index.html";
+      signInForm.classList.add("was-validated");
     });
   }
 
-  // --- DYNAMIC UI MANAGEMENT BASED ON AUTH STATE ---
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const navLoginIcon = document.querySelector(".nav-icons .login-icon");
   const navProfileDropdown = document.querySelector(
@@ -92,27 +118,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- CORRECTED: PROFILE DROPDOWN CLICK LOGIC ---
   const profileBtn = document.querySelector(".profile-btn");
   if (profileBtn && navProfileDropdown) {
     profileBtn.addEventListener("click", (e) => {
-      // Toggle the active state when the button is clicked
       navProfileDropdown.classList.toggle("active");
     });
   }
 
-  // Close dropdown if clicking anywhere else on the page
   document.addEventListener("click", (e) => {
-    // Check if the dropdown exists and is active
     if (navProfileDropdown && navProfileDropdown.classList.contains("active")) {
-      // If the click was outside the dropdown container, close it
       if (!e.target.closest(".profile-dropdown")) {
         navProfileDropdown.classList.remove("active");
       }
     }
   });
 
-  // --- DASHBOARD PAGE LOGIC ---
   const dashboardContent = document.querySelector(".dashboard-content");
   if (dashboardContent) {
     if (currentUser) {
@@ -129,7 +149,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- LOGOUT LOGIC ---
   const logoutButtons = document.querySelectorAll(".logout-button");
   logoutButtons.forEach((button) => {
     button.addEventListener("click", (e) => {

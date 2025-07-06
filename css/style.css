@@ -112,7 +112,7 @@ nav {
 .hero {
   background: linear-gradient(
       to right,
-      rgba(106, 90, 249, 0.5),
+      rgba(106, 90, 249, 0.8),
       rgba(255, 126, 95, 0.8)
     ),
     url("/assets/Images/Nexa-cart-cover.jpg") no-repeat center center/cover;
