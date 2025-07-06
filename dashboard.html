@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Dashboard - NexaCart</title>
+    <script>
+        // If there is NO user in localStorage, redirect to home immediately.
+        if (!localStorage.getItem("currentUser")) {
+            window.location.href = "index.html";
+        }
+    </script>
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/dashboard.css" />
     <link

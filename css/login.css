@@ -123,33 +123,28 @@ body {
   }
 }
 
-/* login.css */
-
 .social-icons {
   margin: 20px 0;
-  display: flex; /* Add this */
-  justify-content: center; /* Add this */
-  align-items: center; /* Add this */
 }
 
-.social-icons a {
+.social-icons a.icon {
   border: 1px solid #ccc;
-  border-radius: 20%;
+  border-radius: 50%;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin: 0 3px;
+  margin: 0 5px;
   width: 40px;
   height: 40px;
+  font-size: 1.1rem;
+  color: #555;
+  text-decoration: none;
+  cursor: pointer; /* FIX: Ensure the cursor always looks clickable */
 }
 
-/* This rule is no longer needed since we added flex properties to the parent */
-/* You can safely delete it. */
-/* .social-icons .g_id_signin {
-  display: block !important;
-  margin: 0 auto;
-} 
-*/
+.social-icons a.icon:hover {
+  background-color: #f1f1f1;
+}
 
 .toggle-container {
   position: absolute;

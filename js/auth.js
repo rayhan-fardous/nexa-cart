@@ -16,11 +16,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // --- CUSTOM GOOGLE SIGN-IN BUTTON TRIGGER ---
+  const googleButtons = document.querySelectorAll(".google-signin-button");
+  googleButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (
+        typeof google !== "undefined" &&
+        google.accounts &&
+        google.accounts.id
+      ) {
+        google.accounts.id.prompt();
+      } else {
+        console.error("Google Identity Services library not loaded yet.");
+        alert(
+          "Google Sign-In is not ready. Please wait a moment and try again."
+        );
+      }
+    });
+  });
+
   // --- REGISTRATION LOGIC WITH VALIDATION ---
   const signUpForm = document.querySelector(".sign-up form");
   if (signUpForm) {
     signUpForm.addEventListener("submit", (e) => {
-      e.preventDefault(); // Always prevent default submission
+      e.preventDefault();
 
       const name = signUpForm.querySelector('input[type="text"]').value;
       const email = signUpForm.querySelector('input[type="email"]').value;
@@ -32,21 +52,17 @@ document.addEventListener("DOMContentLoaded", () => {
         "#confirmPasswordFeedback"
       );
 
-      // Custom validation check: Do passwords match?
       if (password !== confirmPassword) {
         confirmPasswordFeedback.textContent = "Passwords do not match.";
-        // This is a Bootstrap method to show an input as invalid
         confirmPasswordInput.setCustomValidity("Invalid");
       } else {
         confirmPasswordFeedback.textContent = "Please confirm your password.";
-        // If they match, reset the custom validity
         confirmPasswordInput.setCustomValidity("");
       }
 
       if (!signUpForm.checkValidity()) {
-        e.stopPropagation(); // Stop other events
+        e.stopPropagation();
       } else {
-        // If the form is valid, proceed with registration
         const users = JSON.parse(localStorage.getItem("users")) || [];
         const userExists = users.find((user) => user.email === email);
 
@@ -60,10 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Registration successful! Please sign in.");
         container.classList.remove("active");
         signUpForm.reset();
-        signUpForm.classList.remove("was-validated"); // Reset validation state
+        signUpForm.classList.remove("was-validated");
       }
-
-      // Add was-validated class to show feedback messages
       signUpForm.classList.add("was-validated");
     });
   }
@@ -87,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!user || user.password !== password) {
           alert("Incorrect email or password. Please try again.");
-          signInForm.classList.remove("was-validated"); // Reset validation state on error
+          signInForm.classList.remove("was-validated");
           return;
         }
 
@@ -100,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // --- DYNAMIC UI UPDATES BASED ON LOGIN STATE ---
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const navLoginIcon = document.querySelector(".nav-icons .login-icon");
   const navProfileDropdown = document.querySelector(
@@ -144,7 +159,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (profileName) profileName.textContent = currentUser.name;
       if (profileEmail) profileEmail.textContent = currentUser.email;
     } else {
-      alert("You must be logged in to view this page.");
       window.location.href = "login.html";
     }
   }
