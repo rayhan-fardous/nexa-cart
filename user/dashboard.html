@@ -10,10 +10,10 @@
         window.location.href = "index.html";
       }
     </script>
-    
+
     <link rel="stylesheet" href="/css/base.css" />
     <link rel="stylesheet" href="/user/css/dashboard.css" />
-    <link rel="stylesheet" href="/user/css/userProfileContent.css">
+    <link rel="stylesheet" href="/user/css/userProfileContent.css" />
 
     <link
       rel="stylesheet"
@@ -38,9 +38,23 @@
         <div class="nav-icons">
           <a href="#"><i class="fa-regular fa-heart"></i></a>
           <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-          <a href="#" class="login-icon"
-            ><i class="fa-solid fa-user"></i
-          ></a>
+          <a href="#" class="login-icon"><i class="fa-solid fa-user"></i></a>
+          <!-- This profile dropdown is for logged-in users (hidden by default) -->
+          <div class="profile-dropdown" style="display: none">
+            <button class="profile-btn">
+              <i class="fa-solid fa-user"></i>
+              <span class="profile-name">User</span>
+              <!-- Name will be filled by JS -->
+            </button>
+            <div class="dropdown-content">
+              <a href="/user/dashboard.html" 
+                ><i class="fa-solid fa-gauge-high"></i> Dashboard</a
+              >
+              <a href="#" class="logout-button"
+                ><i class="fa-solid fa-right-from-bracket"></i> Logout</a
+              >
+            </div>
+          </div>
         </div>
       </nav>
     </header>

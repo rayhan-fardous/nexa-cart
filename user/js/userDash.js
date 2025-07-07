@@ -1,3 +1,12 @@
+// --- DYNAMIC UI UPDATES BASED ON LOGIN STATE ---
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const navLoginIcon = document.querySelector(".nav-icons .login-icon");
+  const navProfileDropdown = document.querySelector(
+    ".nav-icons .profile-dropdown"
+  );
+
+  
+
 document.addEventListener("DOMContentLoaded", () => {
   // 1. GET ELEMENTS
   const contentArea = document.querySelector(".dashboard-content");
