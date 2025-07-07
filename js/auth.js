@@ -16,26 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- CUSTOM GOOGLE SIGN-IN BUTTON TRIGGER ---
-  const googleButtons = document.querySelectorAll(".google-signin-button");
-  googleButtons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (
-        typeof google !== "undefined" &&
-        google.accounts &&
-        google.accounts.id
-      ) {
-        google.accounts.id.prompt();
-      } else {
-        console.error("Google Identity Services library not loaded yet.");
-        alert(
-          "Google Sign-In is not ready. Please wait a moment and try again."
-        );
-      }
-    });
-  });
-
   // --- REGISTRATION LOGIC WITH VALIDATION ---
   const signUpForm = document.querySelector(".sign-up form");
   if (signUpForm) {
@@ -62,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!signUpForm.checkValidity()) {
         e.stopPropagation();
+        signUpForm.classList.add("was-validated");
       } else {
         const users = JSON.parse(localStorage.getItem("users")) || [];
         const userExists = users.find((user) => user.email === email);
@@ -78,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         signUpForm.reset();
         signUpForm.classList.remove("was-validated");
       }
-      signUpForm.classList.add("was-validated");
+      
     });
   }
 
@@ -87,7 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (signInForm) {
     signInForm.addEventListener("submit", (e) => {
       e.preventDefault();
-
+      signInForm.classList.add("was-validated");
+      
       if (!signInForm.checkValidity()) {
         e.stopPropagation();
       } else {
@@ -106,11 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         localStorage.setItem("currentUser", JSON.stringify(user));
-        alert(`Welcome back, ${user.name}!`);
         window.location.href = "index.html";
       }
-
-      signInForm.classList.add("was-validated");
     });
   }
 
