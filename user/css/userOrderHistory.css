@@ -1,0 +1,334 @@
+/* ========================================
+        Global Styles & Variables
+        ========================================
+        */
+:root {
+  --primary-color: #7b4dff;
+  --primary-hover-color: #6a3de8;
+  --text-dark: #1a202c;
+  --text-light: #4a5568;
+  --border-color: #e2e8f0;
+  --background-light: #f4f7fa;
+  --background-white: #ffffff;
+  --status-delivered-bg: #e6f7ec;
+  --status-delivered-text: #0d6b33;
+  --status-shipped-bg: #eaf4ff;
+  --status-shipped-text: #004085;
+  --status-pending-bg: #fff9e6;
+  --status-pending-text: #856404;
+  --status-cancelled-bg: #fdeeee;
+  --status-cancelled-text: #721c24;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-light);
+  margin: 0;
+  padding: 20px;
+}
+
+/* ========================================
+        Main Layout Container
+        ========================================
+        */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  background-color: var(--background-white);
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* ========================================
+        Typography & Reusable Components
+        ========================================
+        */
+h1 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text-dark);
+}
+
+.breadcrumbs {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 25px;
+}
+
+.breadcrumbs a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+/* ========================================
+        Filter Section
+        ========================================
+        */
+.filter-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.filter-section .search-input {
+  flex-grow: 1;
+  min-width: 200px;
+}
+
+.filter-section input[type="text"],
+.filter-section input[type="date"],
+.filter-section select {
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.filter-section input:focus,
+.filter-section select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(123, 77, 255, 0.2);
+}
+
+.filter-section .date-range {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-button {
+  padding: 12px 24px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.filter-button:hover {
+  background-color: var(--primary-hover-color);
+}
+
+/* ========================================
+        Orders Table (Desktop)
+        ========================================
+        */
+.orders-table-wrapper {
+  width: 100%;
+  overflow-x: auto; /* For very narrow screens if table still overflows */
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.orders-table th {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.orders-table td {
+  font-size: 15px;
+  color: var(--text-dark);
+}
+
+.orders-table .order-id {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  min-width: 65px;
+}
+
+.status-delivered {
+  background-color: var(--status-delivered-bg);
+  color: var(--status-delivered-text);
+}
+.status-shipped {
+  background-color: var(--status-shipped-bg);
+  color: var(--status-shipped-text);
+}
+.status-pending {
+  background-color: var(--status-pending-bg);
+  color: var(--status-pending-text);
+}
+.status-cancelled {
+  background-color: var(--status-cancelled-bg);
+  color: var(--status-cancelled-text);
+}
+
+.action-links a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  margin-right: 15px;
+  transition: color 0.3s;
+}
+
+.action-links a:hover {
+  color: var(--primary-hover-color);
+  text-decoration: underline;
+}
+
+.action-links a:last-child {
+  margin-right: 0;
+}
+
+.orders-list-mobile {
+  display: none; /* Hidden on desktop */
+}
+
+/* ========================================
+        Pagination
+        ========================================
+        */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.pagination a {
+  padding: 10px 16px;
+  margin: 0 4px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.pagination a:hover {
+  background-color: #f7f3ff;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.pagination a.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* ========================================
+        Responsive Design (Mobile First Approach)
+        ========================================
+        */
+
+/* For Tablets and smaller devices */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .orders-table-wrapper {
+    display: none; /* Hide desktop table */
+  }
+
+  .orders-list-mobile {
+    display: block; /* Show mobile list */
+    /* space-y: 1rem; */
+  }
+
+  .order-card {
+    background-color: #fdfdff;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .card-header .order-id {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+
+  .card-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .card-body div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-body .label {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 4px;
+  }
+
+  .card-footer {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+}
+
+/* For very small mobile screens */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  .container {
+    padding: 15px;
+  }
+  .filter-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .card-body {
+    grid-template-columns: 1fr; /* Stack details vertically */
+  }
+}

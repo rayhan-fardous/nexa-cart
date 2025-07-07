@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const links = {
     dashboard: document.getElementById("dashboard-link"),
     profile: document.getElementById("profile-link"),
+    orders: document.getElementById("orders-link")
     // Add other links here later (e.g., orders: document.getElementById('orders-link'))
   };
   const allSidebarLinks = document.querySelectorAll(".dashboard-sidebar a");
@@ -53,6 +54,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load the content from our new partial file
     loadContent("/user/_userProfileContent.html");
     setActiveLink(links.profile);
+  });
+
+  links.orders.addEventListener("click", (e) => {
+    e.preventDefault();
+    // Load the content from our new partial file
+    loadContent("/user/userOrderHistory.html");
+    setActiveLink(links.orders);
   });
 
 

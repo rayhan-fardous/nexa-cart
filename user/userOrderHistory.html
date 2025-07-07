@@ -1,0 +1,162 @@
+<h1>All Orders</h1>
+
+<!-- Filter and Search Controls -->
+<section class="filter-section">
+  <input
+    type="text"
+    class="search-input"
+    placeholder="Search by Order ID or Product..."
+  />
+  <select aria-label="Filter by status">
+    <option value="">All Statuses</option>
+    <option value="delivered">Delivered</option>
+    <option value="shipped">Shipped</option>
+    <option value="pending">Pending</option>
+    <option value="cancelled">Cancelled</option>
+  </select>
+  <div class="date-range">
+    <input type="date" aria-label="Start date" />
+    <span>to</span>
+    <input type="date" aria-label="End date" />
+  </div>
+  <button class="filter-button">Filter</button>
+</section>
+
+<!-- Orders Table for Desktop -->
+<div class="orders-table-wrapper">
+  <table class="orders-table">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Items</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="order-id">#NC-84321</td>
+        <td>July 01, 2025</td>
+        <td>
+          <span class="status-badge status-delivered">Delivered</span>
+        </td>
+        <td>3</td>
+        <td>$299.99</td>
+        <td class="action-links">
+          <a href="#">View Details</a>
+          <a href="#">Reorder</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="order-id">#NC-84156</td>
+        <td>June 25, 2025</td>
+        <td><span class="status-badge status-shipped">Shipped</span></td>
+        <td>1</td>
+        <td>$89.50</td>
+        <td class="action-links">
+          <a href="#">Track Order</a>
+          <a href="#">View Details</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="order-id">#NC-84098</td>
+        <td>June 22, 2025</td>
+        <td><span class="status-badge status-pending">Pending</span></td>
+        <td>2</td>
+        <td>$45.00</td>
+        <td class="action-links">
+          <a href="#">View Details</a>
+          <a href="#">Cancel</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="order-id">#NC-83991</td>
+        <td>June 15, 2025</td>
+        <td>
+          <span class="status-badge status-delivered">Delivered</span>
+        </td>
+        <td>1</td>
+        <td>$149.99</td>
+        <td class="action-links">
+          <a href="#">View Details</a>
+          <a href="#">Reorder</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="order-id">#NC-83905</td>
+        <td>June 12, 2025</td>
+        <td>
+          <span class="status-badge status-cancelled">Cancelled</span>
+        </td>
+        <td>4</td>
+        <td>$499.00</td>
+        <td class="action-links">
+          <a href="#">View Details</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Order List for Mobile -->
+<div class="orders-list-mobile">
+  <!-- Card 1 -->
+  <div class="order-card">
+    <div class="card-header">
+      <span class="order-id">#NC-84321</span>
+      <span class="status-badge status-delivered">Delivered</span>
+    </div>
+    <div class="card-body">
+      <div><span class="label">Date</span>July 01, 2025</div>
+      <div><span class="label">Total</span>$299.99</div>
+      <div><span class="label">Items</span>3</div>
+    </div>
+    <div class="card-footer action-links">
+      <a href="#">View Details</a>
+      <a href="#">Reorder</a>
+    </div>
+  </div>
+  <!-- Card 2 -->
+  <div class="order-card">
+    <div class="card-header">
+      <span class="order-id">#NC-84156</span>
+      <span class="status-badge status-shipped">Shipped</span>
+    </div>
+    <div class="card-body">
+      <div><span class="label">Date</span>June 25, 2025</div>
+      <div><span class="label">Total</span>$89.50</div>
+      <div><span class="label">Items</span>1</div>
+    </div>
+    <div class="card-footer action-links">
+      <a href="#">Track Order</a>
+      <a href="#">View Details</a>
+    </div>
+  </div>
+  <!-- Card 3 -->
+  <div class="order-card">
+    <div class="card-header">
+      <span class="order-id">#NC-84098</span>
+      <span class="status-badge status-pending">Pending</span>
+    </div>
+    <div class="card-body">
+      <div><span class="label">Date</span>June 22, 2025</div>
+      <div><span class="label">Total</span>$45.00</div>
+      <div><span class="label">Items</span>2</div>
+    </div>
+    <div class="card-footer action-links">
+      <a href="#">View Details</a>
+      <a href="#">Cancel</a>
+    </div>
+  </div>
+</div>
+
+<!-- Pagination Controls -->
+<nav class="pagination" aria-label="Page navigation">
+  <a href="#" aria-label="Previous page">&laquo;</a>
+  <a href="#" class="active" aria-current="page">1</a>
+  <a href="#">2</a>
+  <a href="#">3</a>
+  <a href="#" aria-label="Next page">&raquo;</a>
+</nav>
