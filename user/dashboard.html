@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Dashboard - NexaCart</title>
     <script>
-        // If there is NO user in localStorage, redirect to home immediately.
-        if (!localStorage.getItem("currentUser")) {
-            window.location.href = "index.html";
-        }
+      // If there is NO user in localStorage, redirect to home immediately.
+      if (!localStorage.getItem("currentUser")) {
+        window.location.href = "index.html";
+      }
     </script>
+    
     <link rel="stylesheet" href="/css/base.css" />
     <link rel="stylesheet" href="/user/css/dashboard.css" />
+    <link rel="stylesheet" href="/user/css/userProfileContent.css">
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -45,22 +48,24 @@
       <aside class="dashboard-sidebar">
         <ul>
           <li>
-            <a href="#" class="active"
+            <a href="#" id="dashboard-link" class="active"
               ><i class="fa-solid fa-gauge-high"></i> Dashboard</a
             >
           </li>
           <li>
-            <a href="#"
+            <a href="#" id="orders-link"
               ><i class="fa-solid fa-box-archive"></i> Order History</a
             >
           </li>
           <li>
-            <a href="/user/userProfile.html"
+            <a href="#" id="profile-link"
               ><i class="fa-solid fa-user-pen"></i> Profile Settings</a
             >
           </li>
           <li>
-            <a href="#"><i class="fa-solid fa-heart"></i> Wishlist</a>
+            <a href="#" id="wishlist-link"
+              ><i class="fa-solid fa-heart"></i> Wishlist</a
+            >
           </li>
 
           <li>
@@ -154,6 +159,7 @@
         </div>
       </div>
     </footer>
-    <script src="js/auth.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/user/js/userDash.js"></script>
   </body>
 </html>

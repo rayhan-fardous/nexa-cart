@@ -1,0 +1,122 @@
+/* userProfileContent.css
+  Scoped styles for the user profile settings page.
+  These styles will only apply to elements inside .profile-container
+*/
+
+/* Main container for the profile settings form */
+.profile-container {
+    background-color: #ffffff;
+    padding: 2.5rem; /* Increased padding for more space */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animation for a smooth fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styling for the main heading */
+.profile-container h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+/* Profile picture section */
+.profile-container .profile-picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.profile-container .profile-picture img#profile-preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #f0f2f5;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hide the default file input */
+.profile-container .profile-picture input[type="file"] {
+    display: none;
+}
+
+/* Style the custom "Change Picture" button */
+.profile-container .profile-picture label {
+    background-color: var(--primary-color, #5a67d8);
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.profile-container .profile-picture label:hover {
+    background-color: #434190;
+    transform: translateY(-2px);
+}
+
+/* Styling for each form group (label + input) */
+.profile-container .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.profile-container .form-group label {
+    display: block;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.profile-container .form-group input[type="text"],
+.profile-container .form-group input[type="email"],
+.profile-container .form-group input[type="tel"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-container .form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color, #5a67d8);
+    box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.2);
+}
+
+/* Save Changes button styling */
+.profile-container button[type="submit"] {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #28a745; 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.profile-container button[type="submit"]:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
