@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (profileName) profileName.textContent = currentUser.name;
       if (profileEmail) profileEmail.textContent = currentUser.email;
     } else {
-      window.location.href = "login.html";
+      window.location.href = "/index.html";
     }
   }
 
@@ -147,8 +147,8 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", (e) => {
       e.preventDefault();
       localStorage.removeItem("currentUser");
-      alert("You have been logged out.");
-      window.location.href = "index.html";
+      
+      window.location.href = "/index.html";
     });
   });
 });
