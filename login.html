@@ -61,13 +61,49 @@
     </script>
   </head>
   <body class="login-body">
-    <div
-      id="g_id_onload"
-      data-client_id="68796358151-gd0q5jduf035f7emgiag53aataukht1q.apps.googleusercontent.com"
-      data-callback="handleCredentialResponse"
-      data-context="signin"
-      data-use_fedcm_for_prompt="false"
-    ></div>
+    <header>
+      <nav>
+        <a href="index.html" class="logo"
+          ><img
+            src="./assets/Images/logo.png"
+            alt="NexaCart"
+            style="height: 40px; vertical-align: middle; margin-right: 5px"
+        /></a>
+        <!-- <a href="index.html" class="logo">NexaCart</a> -->
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <div class="nav-icons">
+            <a href="#"><i class="fa-regular fa-heart"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+
+            <!-- This icon is for logged-out users -->
+            <a href="login.html" class="login-icon"
+              ><i class="fa-regular fa-user"></i
+            ></a>
+
+            <!-- This profile dropdown is for logged-in users (hidden by default) -->
+            <div class="profile-dropdown" style="display: none">
+              <button class="profile-btn">
+                <i class="fa-solid fa-user"></i>
+                <span class="profile-name">User</span>
+                <!-- Name will be filled by JS -->
+              </button>
+              <div class="dropdown-content">
+                <a href="./user/dashboard.html"
+                  ><i class="fa-solid fa-gauge-high"></i> Dashboard</a
+                >
+                <a href="#" class="logout-button"
+                  ><i class="fa-solid fa-right-from-bracket"></i> Logout</a
+                >
+              </div>
+            </div>
+          </div>
+        </ul>
+      </nav>
+    </header>
 
     <div class="container" id="container">
       <div class="form-container sign-up">

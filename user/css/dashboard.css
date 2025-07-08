@@ -1,3 +1,9 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Good practice for predictable sizing */
+}
 /* Header & Navigation */
 header {
     box-shadow: var(--box-shadow);
