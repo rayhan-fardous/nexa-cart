@@ -1,40 +1,33 @@
-// --- DYNAMIC UI UPDATES BASED ON LOGIN STATE ---
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  const navLoginIcon = document.querySelector(".nav-icons .login-icon");
-  const navProfileDropdown = document.querySelector(
-    ".nav-icons .profile-dropdown"
-  );
-
-  
-
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. GET ELEMENTS
+  // GET ELEMENTS
   const contentArea = document.querySelector(".dashboard-content");
   const links = {
     dashboard: document.getElementById("dashboard-link"),
     profile: document.getElementById("profile-link"),
-    orders: document.getElementById("orders-link")
-    // Add other links here later (e.g., orders: document.getElementById('orders-link'))
+    orders: document.getElementById("orders-link"),
   };
   const allSidebarLinks = document.querySelectorAll(".dashboard-sidebar a");
 
   // STORE INITIAL CONTENT
   const initialDashboardHTML = contentArea.innerHTML;
 
-  // CONTENT LOADING FUNCTION 
-  const loadContent = async (url) => {
+  const loadContent = async (url, callback) => {
     try {
       const response = await fetch(url);
-      if (!response.ok) throw new Error("Content not found");
+      if (!response.ok) throw new Error(`Content not found at ${url}`);
       const newContent = await response.text();
       contentArea.innerHTML = newContent;
+
+      if (callback) {
+        callback();
+      }
     } catch (error) {
       contentArea.innerHTML = `<p class="error">Error loading content. Please try again later.</p>`;
       console.error("Failed to load content:", error);
     }
   };
 
-  // HELPER FUNCTION FOR ACTIVE STATE 
+  // HELPER FUNCTION FOR ACTIVE STATE
   const setActiveLink = (activeLink) => {
     allSidebarLinks.forEach((link) => link.classList.remove("active"));
     if (activeLink) {
@@ -45,23 +38,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // EVENT LISTENERS
   links.dashboard.addEventListener("click", (e) => {
     e.preventDefault();
-    contentArea.innerHTML = initialDashboardHTML; // Restore original content
+    contentArea.innerHTML = initialDashboardHTML;
     setActiveLink(links.dashboard);
   });
 
   links.profile.addEventListener("click", (e) => {
     e.preventDefault();
-    // Load the content from our new partial file
-    loadContent("/user/_userProfileContent.html");
     setActiveLink(links.profile);
+    loadContent("/user/_userProfileSetting.html", () => {
+      initializeProfileForm();
+      initializeAddressForm();
+    });
   });
 
   links.orders.addEventListener("click", (e) => {
     e.preventDefault();
-    // Load the content from our new partial file
-    loadContent("/user/userOrderHistory.html");
     setActiveLink(links.orders);
+    loadContent("/user/_userOrderHistory.html");
   });
-
-
 });

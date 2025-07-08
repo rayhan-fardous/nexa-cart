@@ -1,0 +1,75 @@
+{
+    "districts": [
+        {
+            "id": "dhaka",
+            "name": "Dhaka"
+        },
+        {
+            "id": "chittagong",
+            "name": "Chittagong"
+        },
+        {
+            "id": "thakurgaon",
+            "name": "Thakurgaon"
+        }
+    ],
+    "areas": [
+        {
+            "id": "gulshan",
+            "name": "Gulshan",
+            "district_id": "dhaka"
+        },
+        {
+            "id": "dhanmondi",
+            "name": "Dhanmondi",
+            "district_id": "dhaka"
+        },
+        {
+            "id": "agrabad",
+            "name": "Agrabad",
+            "district_id": "chittagong"
+        },
+        {
+            "id": "nasirabad",
+            "name": "Nasirabad",
+            "district_id": "chittagong"
+        },
+        {
+            "id": "sadar_thakurgaon",
+            "name": "Sadar",
+            "district_id": "thakurgaon"
+        },
+        {
+            "id": "pirganj",
+            "name": "Pirganj",
+            "district_id": "thakurgaon"
+        }
+    ],
+    "local_addresses": [
+        {
+            "id": "gulshan_1",
+            "name": "Gulshan 1",
+            "area_id": "gulshan"
+        },
+        {
+            "id": "gulshan_2",
+            "name": "Gulshan 2",
+            "area_id": "gulshan"
+        },
+        {
+            "id": "road_27",
+            "name": "Road 27",
+            "area_id": "dhanmondi"
+        },
+        {
+            "id": "thakurgaon_road",
+            "name": "Thakurgaon Road",
+            "area_id": "sadar_thakurgaon"
+        },
+        {
+            "id": "govinda_nagar",
+            "name": "Govinda Nagar",
+            "area_id": "sadar_thakurgaon"
+        }
+    ]
+}

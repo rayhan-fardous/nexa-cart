@@ -1,0 +1,142 @@
+/*
+ * address.css
+ * Styles for the address management section and the two-column profile settings layout.
+ */
+
+/* Main wrapper for the entire profile settings content (edit profile + address) */
+.profile-settings-wrapper {
+  display: flex;
+  /* Arrange children (profile edit and address sections) side-by-side */
+  flex-wrap: wrap;
+  /* Allow items to wrap to the next line on smaller screens */
+  gap: 2rem;
+  /* Space between the two columns */
+  align-items: flex-start;
+  /* Align columns to the top */
+}
+
+/* Left column: Profile Editing Section */
+.profile-edit-section {
+  flex: 1;
+  /* Each column takes up equal space */
+  min-width: 320px;
+  /* Minimum width before the layout wraps */
+}
+
+/* Right column: Address Management Section */
+.address-section {
+  flex: 1;
+  /* Each column takes up equal space */
+  min-width: 320px;
+  /* Minimum width before the layout wraps */
+}
+
+/* Card styling for the address management form */
+.address-management-card {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.5s ease-in-out;
+  /* Uses the same animation as your profile editor */
+}
+
+.address-management-card h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+/* Used to place two form elements in a single row (e.g., District and Area) */
+.address-management-card .form-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.address-management-card .form-row .form-group {
+  flex: 1;
+  /* Each form group in the row takes equal width */
+  margin-bottom: 0;
+  /* Margin is handled by the .form-row container */
+}
+
+.address-management-card .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.address-management-card .form-group label {
+  display: block;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.address-management-card .form-group label .required {
+  color: #e53e3e;
+  /* Red color for the required asterisk */
+}
+
+/* Styling for input fields and select dropdowns in the address form */
+.address-management-card .form-group input[type="text"],
+.address-management-card .form-group select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Style for disabled dropdowns */
+.address-management-card .form-group select:disabled {
+  background-color: #f0f2f5;
+  cursor: not-allowed;
+}
+
+/* Focus styles for inputs and selects */
+.address-management-card .form-group input:focus,
+.address-management-card .form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color, #5a67d8);
+  box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.2);
+}
+
+/* "Save Address" button styling */
+.address-management-card .btn-save-address {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--primary-color, #5a67d8);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  /* Adds space above the button */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.address-management-card .btn-save-address:hover {
+  background-color: #434190;
+  /* A darker shade on hover */
+  transform: translateY(-2px);
+}
+
+/* Fade-in animation for consistency */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

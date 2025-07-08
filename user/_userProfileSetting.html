@@ -1,0 +1,94 @@
+
+<div class="profile-settings-wrapper">
+  <!-- Left Section: Profile Editing -->
+  <div class="profile-edit-section">
+    <!-- The content from your _userProfileContent.html file goes here -->
+    <div class="profile-container">
+      <h2>Edit Your Profile</h2>
+      <form id="profile-form">
+        <div class="profile-picture">
+          <img
+            src="/assets/Images/defaultProfile.png"
+            alt="Profile Picture"
+            id="profile-preview"
+          />
+          <input
+            type="file"
+            id="profile-picture-input"
+            name="profile_picture"
+            accept="image/*"
+          />
+          <label for="profile-picture-input">Change Picture</label>
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" value="Rayhan Fardous" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value="rayhan@example.com"
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" value="+880123456789" />
+        </div>
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Right Section: Address Management -->
+  <div class="address-section">
+    <!-- The content from your _address.html file goes here -->
+    <div class="address-management-card">
+      <h3>Add Address</h3>
+      <form id="address-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="district"
+              >District <span class="required">*</span></label
+            >
+            <select id="district" name="district" required>
+              <option value="" selected>Select District</option>
+              <!-- Options will be populated by JS -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="area">Area <span class="required">*</span></label>
+            <select id="area" name="area" required disabled>
+              <option value="" selected>Select Area</option>
+              <!-- Options will be populated by JS -->
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="local-address"
+            >Local Address <span class="required">*</span></label
+          >
+          <select id="local-address" name="local_address" required disabled>
+            <option value="" selected>Select Local Address</option>
+            <!-- Options will be populated by JS -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="street-address">Street Address (Optional)</label>
+          <input
+            type="text"
+            id="street-address"
+            name="street_address"
+            placeholder="e.g., House 123, Road 4"
+          />
+        </div>
+
+        <button type="submit" class="btn-save-address">Save Address</button>
+      </form>
+    </div>
+  </div>
+</div>
