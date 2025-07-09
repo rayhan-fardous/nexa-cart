@@ -59,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
         signUpForm.reset();
         signUpForm.classList.remove("was-validated");
       }
-      
     });
   }
 
@@ -69,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     signInForm.addEventListener("submit", (e) => {
       e.preventDefault();
       signInForm.classList.add("was-validated");
-      
+
       if (!signInForm.checkValidity()) {
         e.stopPropagation();
       } else {
@@ -90,6 +89,61 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("currentUser", JSON.stringify(user));
         window.location.href = "index.html";
       }
+    });
+  }
+
+  // --- FORGOT PASSWORD LOGIC ---
+  const forgotPasswordLink = document.getElementById("forgotPasswordLink");
+  if (forgotPasswordLink) {
+    forgotPasswordLink.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const email = prompt(
+        "Please enter the email for the account you want to recover:"
+      );
+      if (!email) {
+        return; // Exit if the user cancels the prompt
+      }
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const userToUpdate = users.find((u) => u.email === email);
+
+      if (!userToUpdate) {
+        alert("No user found with that email address.");
+        return;
+      }
+
+      // Do not allow password reset for Google-authenticated users
+      if (userToUpdate.isGoogleUser) {
+        alert(
+          "Password reset is not available for accounts signed in with Google."
+        );
+        return;
+      }
+
+      const newPassword = prompt(
+        "Enter your new password (must be at least 8 characters):"
+      );
+      if (!newPassword || newPassword.length < 8) {
+        alert("Invalid password. Password must be at least 8 characters long.");
+        return;
+      }
+
+      const confirmNewPassword = prompt("Please confirm your new password:");
+      if (newPassword !== confirmNewPassword) {
+        alert("Passwords do not match. Please try again.");
+        return;
+      }
+
+      // Update the user's password
+      userToUpdate.password = newPassword;
+
+      // Save the updated users array back to localStorage
+      localStorage.setItem("users", JSON.stringify(users));
+
+      alert(
+        "Password reset successfully! You can now sign in with your new password."
+      );
     });
   }
 
@@ -147,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", (e) => {
       e.preventDefault();
       localStorage.removeItem("currentUser");
-      
+
       window.location.href = "/index.html";
     });
   });
